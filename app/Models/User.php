@@ -41,4 +41,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function birthdays(){
+        return $this->hasMany(Birthday::class);
+    }
+    public function weddings(){
+        return $this->hasMany(Wedding::class);
+    }
+    public function graduation(){
+        return $this->hasMany(Graduation::class);
+    }
+    public function allevents(){
+        return $this->hasMany(Allevents::class);
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function hasRole(...$user_roles){
+        foreach($this->roles as $role){
+            if(in_array($role->name,$user_roles)){
+                return true;
+            }
+            return false;
+        }
+    }
+
 }

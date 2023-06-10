@@ -64,3 +64,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## RBAC
+$user_admin=User::class::find(1) . Assigning users variables
+$admin=Role::class::create(['name'=>'Admin','slug'=>'admin']) . Creating roles
+$view_dashboard=Permission::class::create(['name'=>'View Dashboard','slug'=>'view-dashboard']) . Creating permission called view dashboard
+$user_admin->roles()->attach($admin) . Giving users roles
+$admin->permissions()->attach([$view_dashboard->id,$view_user->id,$view_cake->id]) . Giving permissions to admin role

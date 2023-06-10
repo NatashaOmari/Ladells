@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class OptionController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +15,8 @@ class OptionController extends Controller
     public function index()
     {
         //
+        $users=User::all();
+        return view('users.index',['users'=>$users]);
     }
 
     /**
@@ -80,21 +83,8 @@ class OptionController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function chooseOption(Request $request)
-    {
-        //dd($request);
-        if($request->option=='birthday'){
-            return redirect('/option/birthday/create');
-        }
-        elseif($request->option=='graduation'){
-            return redirect('/option/graduation/create');
-        }
-        elseif($request->option=='wedding'){
-            return redirect('/option/wedding/create');
-        }
-        elseif($request->option=='allevents'){
-            return redirect('/option/allevents/create');
-        }
+        $user=User::findorFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('delMsg','Cake deleted successfully');
     }
 }
