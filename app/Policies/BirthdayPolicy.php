@@ -54,7 +54,7 @@ class BirthdayPolicy
     public function update(User $user, Birthday $birthday)
     {
         //
-        //return $user->id === $birthday->user_id;
+        return $user->id === $birthday->user_id;
     }
 
     /**
@@ -67,7 +67,7 @@ class BirthdayPolicy
     public function delete(User $user, Birthday $birthday)
     {
         //
-       // return $user->id === $birthday->user_id;
+       return $user->id === $birthday->user_id;
     }
 
     /**
@@ -80,7 +80,7 @@ class BirthdayPolicy
     public function restore(User $user, Birthday $birthday)
     {
         //
-       // return $user->id === $birthday->user_id;
+        return $user->id === $birthday->user_id;
     }
 
     /**
@@ -93,6 +93,6 @@ class BirthdayPolicy
     public function forceDelete(User $user, Birthday $birthday)
     {
         //
-      //  return $user->id === $birthday->user_id;
+       return $user->id === $birthday->user_id;
     }
 }

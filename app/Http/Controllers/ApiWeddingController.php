@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Wedding;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ApiWeddingController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class ApiWeddingController extends Controller
         $wedding = new Wedding();
  
          $wedding->name = $request->input('name');
-         $wedding->user_id=$request->input ('user_id');
+         $wedding->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();
@@ -100,7 +100,7 @@ class ApiWeddingController extends Controller
              
          ]);
          $wedding->name = $request->input('name');
-         $wedding->user_id=$request->input ('user_id');
+         $wedding->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();

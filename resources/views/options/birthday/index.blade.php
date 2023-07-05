@@ -50,21 +50,26 @@
                        <td>{{$birthday->id}}</td>
                        <td>{{$birthday->name}}</td> 
                        
-                       <td>{{$birthday->image}}</td>
+                       <td><img class="img-responsive img-rounded center-block" src="{{ asset('uploads/birthdays/'. $birthday->image) }}" height="80px" width="100px" alt=""></td>
                        <td>{{Str::Limit($birthday->recipe,30,'...')}}</td>
                        <td>
-                        
+                        @can('update', $birthday)
                         <button class="btn btn-info">
                             <a href="{{route('birthday.edit',$birthday->id)}}">UPDATE</a>
                         </button>
-                        
+                        @endcan
                        </td>
                        <td>
                        
                         <form action="{{route('birthday.destroy',$birthday->id)}}" method="post">
                             @csrf
+                            
+                            @can('delete', $birthday)
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">DELETE</button>
+                            @endcan
+                            
+    </div>
                         </form>
                         
                        </td>

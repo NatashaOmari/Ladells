@@ -46,7 +46,7 @@ class ApiBirthdayController extends Controller
          
  
          $birthday->name = $request->input('name');
-         $birthday->user_id=$request->input ('user_id');
+         $birthday->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();
@@ -61,6 +61,7 @@ class ApiBirthdayController extends Controller
  
          $birthday->save();
          return 'cake saved';
+         
     }
 
     /**
@@ -103,7 +104,7 @@ class ApiBirthdayController extends Controller
              
          ]);
          $birthday->name = $request->input('name');
-         $birthday->user_id=$request->user_id;
+         $birthday->user_id=Auth::user()->id;
         if ($request->hasFile('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

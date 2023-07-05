@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Allevents;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ApiAlleventsController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class ApiAlleventsController extends Controller
         $allevents = new Allevents();
  
          $allevents->name = $request->input('name');
-         $allevents->user_id=$request->input ('user_id');
+         $allevents->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();
@@ -102,7 +102,7 @@ class ApiAlleventsController extends Controller
          
  
          $allevents->name = $request->input('name');
-         $allevents->user_id=$request->input ('user_id');
+         $allevents->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();

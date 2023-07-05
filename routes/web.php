@@ -71,6 +71,8 @@ Route::get('/addcake', [App\Http\Controllers\HomeController::class, 'addcake'])-
 //admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 
+
 //users
 Route::get('users/index', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::delete('user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');

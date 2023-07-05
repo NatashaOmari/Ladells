@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //birthday
-Route::get('birthdays', [ApiBirthdayController::class, 'index']);
-Route::get('birthday/{id}', [ApiBirthdayController::class, 'show']);
+Route::get('birthdays', [ApiBirthdayController::class,'index']);
+Route::get('birthday/{id}', [ApiBirthdayController::class,'show']);
 Route::post('birthday', [ApiBirthdayController::class, 'store']);
 Route::put('birthday/{id}', [ApiBirthdayController::class, 'update']);
 Route::delete('birthday/{id}', [ApiBirthdayController::class, 'destroy']);

@@ -132,6 +132,7 @@ class BirthdayController extends Controller
         //
         $birthday=Birthday::findorFail($id);
         $birthday->delete();
+        session()->flash('alert', 'Are you sure you want to delete?');
         return redirect()->route('birthday.index')->with('delMsg','Cake deleted successfully');
     }
 }

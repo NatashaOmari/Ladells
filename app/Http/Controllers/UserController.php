@@ -72,6 +72,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user=User::findorFail($id);
+        $request->validate([
+            'name'=>['required','min:2','max:100'],
+             
+         ]);
+         $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+
+        $user->update();
+        return "user updated successfully";
     }
 
     /**

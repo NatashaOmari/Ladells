@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Graduation;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ApiGraduationController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class ApiGraduationController extends Controller
         $graduation = new Graduation();
  
          $graduation->name = $request->input('name');
-         $graduation->user_id=$request->input ('user_id');
+         $graduation->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();
@@ -100,7 +100,7 @@ class ApiGraduationController extends Controller
              
          ]);
          $graduation->name = $request->input('name');
-         $graduation->user_id=$request->input ('user_id');
+         $graduation->user_id=Auth::user()->id;
          if ($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension();

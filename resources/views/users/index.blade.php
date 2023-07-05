@@ -25,7 +25,7 @@
                       
                       <th>Email</th>
 
-                      <th>Update</th>
+                      
                       <th>Delete</th>
                     </tr>
                   </thead>
@@ -36,7 +36,7 @@
                       
                       <th>Email</th>
 
-                      <th>Update</th>
+                      
                       <th>Delete</th>
                     </tr>
                   </tfoot>
@@ -49,13 +49,7 @@
                        
                        <td>{{$user->email}}</td>
                        
-                       <td>
-                        
-                        <button class="btn btn-info">
-                            <a href="">UPDATE</a>
-                        </button>
-                        
-                       </td>
+                       
                        <td>
                        
                         <form action="{{route('user.destroy',$user->id)}}" method="post">

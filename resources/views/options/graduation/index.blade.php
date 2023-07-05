@@ -47,21 +47,23 @@
                     <td>{{$graduation->user->name}}</td>
                        <td>{{$graduation->id}}</td>
                        <td>{{$graduation->name}}</td> 
-                       <td>{{$graduation->image}}</td>
+                       <td><img class="img-responsive img-rounded center-block" src="{{ asset('uploads/graduations/'. $graduation->image) }}" height="80px" width="100px" alt=""></td>
                        <td>{{Str::Limit($graduation->recipe,30,'...')}}</td>
                        <td>
-                       
+                       @can('update', $birthday)
                         <button class="btn btn-info">
                             <a href="{{route('graduation.edit',$graduation->id)}}">UPDATE</a>
                         </button>
-                        
+                        @endcan
                        </td>
                        <td>
                        
                         <form action="{{route('graduation.destroy',$graduation->id)}}" method="post">
                             @csrf
+                            @can('delete', $birthday)
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">DELETE</button>
+                            @endcan
                         </form>
                         
                        </td>
